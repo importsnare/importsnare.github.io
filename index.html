@@ -1,31 +1,178 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400&display=swap" rel="stylesheet" />
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages</title>
+    <meta charset="UTF-8" />
+    <title>BigCodeBench Leaderboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.min.js"></script>
+    <link rel="icon"
+        href="https://cdn-avatars.huggingface.co/v1/production/uploads/1659521200179-5e48005437cb5b49818287a5.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" />
+
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: "JetBrains Mono", monospace;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        #content {
+            width: 75%;
+        }
+
+        th,
+        td {
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        #notes {
+            font-size: 1em;
+        }
+
+        #notes h3 {
+            margin-top: 1em;
+            font-size: 2em;
             text-align: center;
-            padding: 50px;
         }
 
-        h1 {
-            color: #333;
+        #notes li {
+            font-size: 1.2em;
+            font-weight: 300;
+            margin: 1em;
         }
 
-        p {
-            color: #666;
+        .form-select {
+            font-size: 1em;
         }
+
+        table {
+            table-layout: auto;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 1400px) {
+            body {
+                font-size: 1.6vw;
+            }
+
+            #content {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            table {
+                font-size: medium;
+            }
+        }
+        /* Add this to your existing <style> section */
+          .btn-group-lg > .btn, .btn-lg {
+              padding: 0.5rem 1rem;
+              font-size: 1.25rem;
+              border-radius: 0.3rem;
+          }
+      
+          .btn-outline-hard {
+              color: #ff6b6b;
+              border: 2px solid #ff6b6b;
+              background-color: transparent;
+          }
+      
+          .btn-outline-hard:hover,
+          .btn-check:checked + .btn-outline-hard,
+          .btn-outline-hard:active {
+              color: #fff;
+              background-color: #ff6b6b !important;
+              border-color: #ff6b6b;
+          }
+      
+          .btn-outline-full {
+              color: #4ecdc4;
+              border: 2px solid #4ecdc4;
+              background-color: transparent;
+          }
+      
+          .btn-outline-full:hover,
+          .btn-check:checked + .btn-outline-full,
+          .btn-outline-full:active {
+              color: #fff;
+              background-color: #4ecdc4 !important;
+              border-color: #4ecdc4;
+          }
     </style>
 </head>
 
-<body>
-    <h1>Welcome to my GitHub Pages!</h1>
-    <p>This is a simple example of a GitHub Pages site.</p>
-</body>
+<div id="content" class="container-fluid d-flex flex-column align-items-center gap-3">
+    <h1 class="text-nowrap mt-5">⚒️ ImportSnare</h1>
+    <div class="alert alert-info border border-info p-4 text-center" style="background-color: #f8f9fa; max-width: 800px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <p class="mb-0 fw-bold" style="font-size: 1.3em;">
+            <strong><i>ImportSnare</i></strong>: Directed "Code Manual" Hijacking in Retrieval-Augmented Code Generation
+        </p>
+    </div>
+    <h3 class="fw-light text-nowrap">
+        <small id="warning">Official project page of <i>ImportSnare</i>  
+           <br /></small>
+    </h3>
+    <div class="d-flex flex-row justify-content-center gap-3">
+        <a href="https://github.com/importsnare/importsnare"><img
+                src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"
+                alt="github" class="img-fluid" /></a>
+        <a href="https://huggingface.co/spaces/tbd"><img
+            src="https://img.shields.io/badge/huggingface-🤗_Leaderboard-yellow.svg?style=for-the-badge"
+            alt="leaderboard" class="img-fluid" /></a>
+        <a href="https://huggingface.co/spaces/todo"><img
+                src="https://img.shields.io/badge/%E2%9A%92%EF%B8%8FImportSnare-paper_TBD-blue?style=for-the-badge"
+                alt="leaderboard" class="img-fluid" /></a>
+    </div>
+    <div class="btn-group" role="group" id="Benchmark">
+      <input type="radio" class="btn-check" name="btnradio" id="Python" checked/>
+      <label class="btn btn-outline-primary" for="Python">Python</label>
+      <input type="radio" class="btn-check" name="btnradio" id="Rust" />
+      <label class="btn btn-outline-primary" for="Rust">Rust</label>
+      <input type="radio" class="btn-check" name="btnradio" id="JavaScript" />
+      <label class="btn btn-outline-primary" for="JavaScript">JavaScript</label>
+  </div>
+    <div id="notes">
+        <h3>📝 Notes</h3>
+        <div class="inline-block mt-3">
+            <ol>
+                <li>
+                    The <strong><i><u>Dataset</u></i></strong> and <strong><i><u>Benchmark</u></i></strong> will come soon!
+                </li>
+                <li>
+                    More <strong><i><u>REAL-WORLD DEMOS</u></i></strong> will be shown here;
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div id="notes">
+        <h3>🙏 Acknowledgements</h3>
+        <div class="inline-block mt-3">
+            <ul>
+                <li>
+                    TBD
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 </html>
