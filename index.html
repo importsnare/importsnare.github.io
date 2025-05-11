@@ -117,6 +117,32 @@
               background-color: #4ecdc4 !important;
               border-color: #4ecdc4;
           }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 30px;  /* 图片间距 */
+            flex-wrap: wrap;  /* 响应式换行 */
+            margin: 50px 0;
+        }
+
+        .figure-container {
+            text-align: center;
+            max-width: 300px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        figcaption {
+            margin-top: 10px;
+            font-family: Arial, sans-serif;
+            color: #666;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 
@@ -149,7 +175,29 @@
       <label class="btn btn-outline-primary" for="Rust">Rust</label>
       <input type="radio" class="btn-check" name="btnradio" id="JavaScript" />
       <label class="btn btn-outline-primary" for="JavaScript">JavaScript</label>
-  </div>
+    </div>
+    <div class="gallery">
+        <div class="figure-container">
+            <figure>
+                <img src="llm_output.png" alt="LLM(GPT-4-mini) response includes hijecked package import statement">
+                <figcaption>LLM(GPT-4-mini) response include hijecked package import statement</figcaption>
+            </figure>
+        </div>
+
+        <div class="figure-container">
+            <figure>
+                <img src="copilot_output.png" alt="Copilot suggestion includes hijecked package import statement">
+                <figcaption>Copilot suggestion includes hijecked package import statement</figcaption>
+            </figure>
+        </div>
+
+        <div class="figure-container">
+            <figure>
+                <img src="real_world.png" alt="A real-world hijecked demo from Tencent Yuanbao with only one single poioned page implanted.">
+                <figcaption>A real-world hijecked demo from Tencent Yuanbao with only one single poioned page implanted.</figcaption>
+            </figure>
+        </div>
+    </div>
     <div id="notes">
         <h3>📝 Notes</h3>
         <div class="inline-block mt-3">
