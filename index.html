@@ -144,7 +144,7 @@
         figcaption {
             margin-top: 12px;
             font-family: Arial, sans-serif;
-            color: #666;
+            color: #000;
             font-size: 1.25em;
             line-height: 1.4;
         }
@@ -186,23 +186,23 @@
         <div class="vertical-gallery">
             <figure>
                 <img src="llm_output.png" alt="LLM(GPT-4-mini) response includes hijecked package import statement">
-                <figcaption><strong>LLM(GPT-4-mini) response include hijecked package import statement</strong></figcaption>
+                <figcaption><strong>LLM(GPT-4-mini) response includes hijacked package <i>(pandas -> pandas_v2)</i> import statement with poisoned RAG document as context.</strong></figcaption>
             </figure>
         </div>
 
         <!-- 图片2 -->
         <div class="vertical-gallery">
             <figure>
-                <img src="copilot_output.png" alt="Copilot suggestion includes hijecked package import statement">
-                <figcaption><strong>Copilot suggestion includes hijecked package import statement</strong></figcaption>
+                <img src="copilot_output.png" alt="Copilot suggestion includes hijacked package import statement">
+                <figcaption><strong>Real-World Demo 1: VsCode Copilot suggestion includes hijacked package <i>(numpy -> cumpy)</i> import statement</strong></figcaption>
             </figure>
         </div>
 
         <!-- 图片3 -->
         <div class="vertical-gallery">
             <figure>
-                <img src="real_world.png" alt="A real-world hijecked demo from Tencent Yuanbao with only one single poioned page implanted.">
-                <figcaption><strong>A real-world hijecked demo from Tencent Yuanbao with only one single poioned page implanted</strong></figcaption>
+                <img src="real_world.png" alt="A real-world hijacked demo from Tencent Yuanbao with only one single poisoned page implanted.">
+                <figcaption><strong>Real-World Demo 2: Tencent Yuanbao web-chat LLM provides help regarding debug info in Python and suggests controlled package <i>(faiss -> faiss_full)</i> import statement with <i>only one</i> single poisoned page implanted (The suggested package and 'reference' link is crafted and not real)</strong></figcaption>
             </figure>
         </div>
     </div>
